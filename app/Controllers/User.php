@@ -11,15 +11,15 @@ class User extends BaseController
 	}
 	
 	public function supplier()
-		{
-			$data['title'] = 'List Supplier';
-			return view('user/supplir/index', $data);
-		}
+	{
+		$data['title'] = 'List Supplier';
+		return view('user/supplier/index', $data);
+	}
 		
 	public function forminputsupplier()
-			{
-				$data['title'] = 'FORM input Supplier';
-				return view('user/supplir/forminputsupplier', $data);
-			}
-		
+	{
+		$data['title'] = 'FORM input Supplier';
+		return view('user/supplier/forminputsupplier', $data);
+	}
+	
 }
