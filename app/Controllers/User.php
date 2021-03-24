@@ -9,4 +9,17 @@ class User extends BaseController
 		$data['title'] = 'Profile';
 		return view('user/index', $data);
 	}
+	
+	public function supplier()
+		{
+			$data['title'] = 'List Supplier';
+			return view('user/supplir/index', $data);
+		}
+		
+	public function forminputsupplier()
+			{
+				$data['title'] = 'FORM input Supplier';
+				return view('user/supplir/forminputsupplier', $data);
+			}
+		
 }

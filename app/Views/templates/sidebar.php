@@ -24,7 +24,7 @@
                     <span>User's Setting</span></a>
             </li>
 
-            <?php endif; ?>
+  <?php endif; ?>
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -39,7 +39,31 @@
                     <i class="far fa-id-card"></i>
                     <span>Profile</span></a>
             </li>
-
+            
+            <li class="nav-item">
+                            <a class="nav-link" href="/user/bon">
+                                <i class="fas fa-hand-holding-water"></i>
+                                <span>Form Pengabilan / Pengebonan</span></a>
+             </li>
+             
+             <li class="nav-item">
+                             <a class="nav-link" href="/user/barang">
+                                 <i class="fas fa-boxes"></i>
+                                 <span>Form List Barang</span></a>
+              </li>
+              
+              <li class="nav-item">
+                              <a class="nav-link" href="/user/supplier">
+                                  <i class="fas fa-truck-moving"></i>
+                                  <span>Form List Supplier</span></a>
+               </li>
+               
+               <li class="nav-item">
+                               <a class="nav-link" href="/user/konsumen">
+                                   <i class="fas fa-users"></i>
+                                   <span>Data Konsumen</span></a>
+              </li>
+              
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
