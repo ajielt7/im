@@ -7,7 +7,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Data Konsumen</h1>
-        <a class="btn btn-primary" href="/user/forminputsupplier" role="button">Tambah Data</a>
+        <a class="btn btn-primary" href="/user/forminputkonsumen" role="button">Tambah Data</a>
         <table class="table">
           <thead>
             <tr>

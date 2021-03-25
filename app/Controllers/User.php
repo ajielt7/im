@@ -9,12 +9,16 @@ use App\Models\SupplierModel;
 
 class User extends BaseController
 {
+	protected $barangModel;
+	protected $bonModel;
+	protected $konsumenModel;
+	protected $supplierModel;
 	public function __construct()
 	{
-		$barangModel = new BarangModel;
-		$bonModel = new BonModel;
-		$konsumenModel = new KonsumenModel;
-		$supplierModel = new SupplierModel;
+		$this->barangModel = new BarangModel;
+		$this->bonModel = new BonModel;
+		$this->konsumenModel = new KonsumenModel;
+		$this->supplierModel = new SupplierModel;
 	}
 	public function index()
 	{
@@ -27,13 +31,13 @@ class User extends BaseController
 	public function bon()
 	{
 		$data['title'] = 'List Pengebonan';
-		return view('user/supplier/index', $data);
+		return view('user/pengambilan/index', $data);
 	}
 		
 	public function forminputbon()
 	{
 		$data['title'] = 'FORM input Pengebonan';
-		return view('user/bon/forminputbon', $data);
+		return view('user/pengambilan/forminputpengambilan', $data);
 	}
 	
 	public function savebon()
@@ -43,6 +47,7 @@ class User extends BaseController
 						'konsumen_id' => $this->request->getVar('konsumen_id'),
 						'jumlahkeluarbarang' => $this->request->getVar('jumlahkeluarbarang')
 					]);
+					
 						return redirect()->to('/user/forminputbon');
 	}
 		
@@ -83,13 +88,23 @@ class User extends BaseController
 		
 	public function forminputsupplier()
 	{
-		$data['title'] = 'FORM input Supplier';
+		session();
+		$data = [
+			'title' => 'FORM input Supplier',
+			'validation' => \Config\Services::validation()
+		];
 		return view('user/supplier/forminputsupplier', $data);
 	}
 	
 	public function savesupplier()
 	{
+		if(!$this->validate([
+			'namasupplier' => 'required|is_unique[supplier.namasupplier]'
+		])){
 
+			$validation = \Config\Services::validation();
+			return redirect()->to('/user/forminputsupplier')->withInput()->with('validation', $validation);
+		}
 		$this->supplierModel->save([
 			'namasupplier' => $this->request->getVar('namasupplier'),
 			'alamatsupplier' => $this->request->getVar('alamatsupplier'),
