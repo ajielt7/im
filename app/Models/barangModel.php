@@ -7,6 +7,6 @@ use CodeIgniter\Model;
 class BarangModel extends Model
 {
     protected $table      = 'barang';
-    protected $allowedFields = ['namabarang','kodesuratjalan', 'jumlahbarang','hargabarang', 'supplier_id','tanggalpenerimaan'];
+    protected $allowedFields = ['namabarang', 'nomorsuratjalan', 'supplier_id','kondisibarang', 'jumlahterima','hargabarang', 'tanggalterima'];
     protected $useTimestamps = true;
 }

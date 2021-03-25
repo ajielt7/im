@@ -7,6 +7,6 @@ use CodeIgniter\Model;
 class SupplierModel extends Model
 {
     protected $table      = 'supplier';
-    protected $allowedFields = ['namasupplier', 'alamatsupplier', 'nomortelepon'];
+    protected $allowedFields = ['namasupplier', 'alamatsupplier', 'notelp'];
     protected $useTimestamps = true;
 }

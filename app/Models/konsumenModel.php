@@ -7,6 +7,6 @@ use CodeIgniter\Model;
 class KonsumenModel extends Model
 {
     protected $table      = 'konsumen';
-    protected $allowedFields = ['namakonsumen', 'alamatkonsumen', 'nomorhandphone'];
+    protected $allowedFields = ['konsumenid', 'namakonsumen', 'alamatkonsumen', 'nohp'];
     protected $useTimestamps = true;
 }

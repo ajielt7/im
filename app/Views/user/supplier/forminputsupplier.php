@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                         <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                        <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        <input type="text" class="form-control" name="notelp" placeholder="Masukan NOMOR Telepon Supplier...">
             </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

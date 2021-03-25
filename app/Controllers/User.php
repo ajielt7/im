@@ -2,8 +2,20 @@
 
 namespace App\Controllers;
 
+use App\Models\BarangModel;
+use App\Models\BonModel;
+use App\Models\KonsumenModel;
+use App\Models\SupplierModel;
+
 class User extends BaseController
 {
+	public function __construct()
+	{
+		$barangModel = new BarangModel;
+		$bonModel = new BonModel;
+		$konsumenModel = new KonsumenModel;
+		$supplierModel = new SupplierModel;
+	}
 	public function index()
 	{
 		$data['title'] = 'Profile';
@@ -28,7 +40,8 @@ class User extends BaseController
 	{
 			$this->bonModel->save([
 						'barang_id' => $this->request->getVar('barang_id'),
-						'konsumen_id' => $this->request->getVar('konsumen_id')
+						'konsumen_id' => $this->request->getVar('konsumen_id'),
+						'jumlahkeluarbarang' => $this->request->getVar('jumlahkeluarbarang')
 					]);
 						return redirect()->to('/user/forminputbon');
 	}
@@ -76,10 +89,11 @@ class User extends BaseController
 	
 	public function savesupplier()
 	{
+
 		$this->supplierModel->save([
-			'namasupllier' => $this->request->getVar('namasupllier'),
+			'namasupplier' => $this->request->getVar('namasupplier'),
 			'alamatsupplier' => $this->request->getVar('alamatsupplier'),
-			'nomortelepon' => $this->request->getVar('nomortelepon'),
+			'notelp' => $this->request->getVar('notelp')
 		]);
 			return redirect()->to('/user/forminputsupplier');
 	}
@@ -87,7 +101,7 @@ class User extends BaseController
  //--EKSEKUSI DATA KONSUMEN--------------------------------------
 
 
-	public function kosumen()
+	public function konsumen()
 	{
 		$data['title'] = 'List Konsumen';
 		return view('user/konsumen/index', $data);
@@ -102,9 +116,10 @@ class User extends BaseController
 	public function savekonsumen()
 	{
     $this->konsumenModel->save([
+			'konsumenid' => $this->request->getVar('konsumenid'),
 			'namakonsumen' => $this->request->getVar('namakonsumen'),
 			'alamatkonsumen' => $this->request->getVar('alamatkonsumen'),
-			'nomorhandphone' => $this->request->getVar('nomorhandphone'),
+			'nohp' => $this->request->getVar('nohp')
 		]);
 			return redirect()->to('/user/forminputkonsumen');
   }	

@@ -12,30 +12,28 @@
           
           <div class="form-group">
             <label for="inputNamaSupplier">Nama Supplier</label>
-            <input type="text" class="form-control" name="namasupplier" placeholder="Masukan Nama Supplier...">
+            <input type="text" class="form-control" name="namabarang" placeholder="Masukan Nama Supplier...">
           </div>
           
-          <div class="form-group">
-                      <label for="inputAlamatSupplier">Alamat Supplier</label>
-                      <input type="text" class="form-control" name="alamatsupplier" placeholder="Masukan Alamat Supplier...">
+            <div class="form-group">
+                      <input type="text" class="form-control" name="nomorsuratjalan" placeholder="Masukan Alamat Supplier...">
             </div>
             
             <div class="form-group">
-                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
-                        </div>
+                       <input type="text" class="form-control" name="supplier_id" placeholder="Masukan Nama Supplier...">
+            </div>
             <div class="form-group">
-                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
-                        </div>
+                        <input type="text" class="form-control" name="kondisibarang" placeholder="Masukan Kondisi Barang...">
+            </div>
             <div class="form-group">
-                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
-                        </div>
+                        <input type="text" class="form-control" name="jumlahterima" placeholder="Masukan Jumlah Penerimaan...">
+            </div>
             <div class="form-group">
-                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
-                        </div>            
+                        <input type="text" class="form-control" name="hargabarang" placeholder="Masukan Harga Barang...">
+            </div>            
+            <div class="form-group">
+                       <input type="text" class="form-control" name="tanggalterima" placeholder="Masukan Tanggal Penerimaan...">
+            </div>            
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

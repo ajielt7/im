@@ -16,12 +16,16 @@
           </div>
           
           <div class="form-group">
-                      <label for="inputAlamatSupplier">Alamat Supplier</label>
-                      <input type="text" class="form-control" name="alamatsupplier" placeholder="Masukan Alamat Supplier...">
+                      <label for="inputIDBarang">ID Barang</label>
+                      <input type="text" class="form-control" name="barang_id" placeholder="Masukan ID Barang...">
             </div>
             <div class="form-group">
-                        <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                        <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        <label for="inputIDKonsumen">ID Konsumen</label>
+                        <input type="text" class="form-control" name="konsumen_id" placeholder="Masukan ID Konsumen...">
+            </div>
+            <div class="form-group">
+                        <label for="inputJumlahBarang">Jumlah Barang</label>
+                        <input type="text" class="form-control" name="jumlahkeluarbarang" placeholder="Masukan Jumlah Barang...">
             </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

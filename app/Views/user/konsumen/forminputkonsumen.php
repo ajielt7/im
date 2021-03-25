@@ -11,17 +11,21 @@
         <form action="/user/savekonsumen" method="post">
           
           <div class="form-group">
-            <label for="inputNamaSupplier">Nama Supplier</label>
-            <input type="text" class="form-control" name="namasupplier" placeholder="Masukan Nama Supplier...">
+            <label for="inputNamaKonsumen">ID Konsumen</label>
+            <input type="text" class="form-control" name="konsumenid" placeholder="Masukan Identitas Konsumen...">
+          </div>
+          <div class="form-group">
+            <label for="inputNamaKonsumen">Nama Konsumen</label>
+            <input type="text" class="form-control" name="namaKonsumen" placeholder="Masukan Nama Konsumen...">
           </div>
           
           <div class="form-group">
-                      <label for="inputAlamatSupplier">Alamat Supplier</label>
-                      <input type="text" class="form-control" name="alamatsupplier" placeholder="Masukan Alamat Supplier...">
+                      <label for="inputAlamatKonsumen">Alamat Konsumen</label>
+                      <input type="text" class="form-control" name="alamatkonsumen" placeholder="Masukan Alamat Konsumen...">
             </div>
             <div class="form-group">
-                        <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                        <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        <label for="inputNamaKonsumen">Nomor HP Konsumen</label>
+                        <input type="text" class="form-control" name="nohp" placeholder="Masukan NOMOR HP Konsumen...">
             </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
