@@ -8,7 +8,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Data Pengambilan / Pengebonan</h1>
         
-        <form>
+        <form action="/user/savebarang" method="post">
           
           <div class="form-group">
             <label for="inputNamaSupplier">Nama Supplier</label>
@@ -19,10 +19,23 @@
                       <label for="inputAlamatSupplier">Alamat Supplier</label>
                       <input type="text" class="form-control" name="alamatsupplier" placeholder="Masukan Alamat Supplier...">
             </div>
+            
             <div class="form-group">
-                        <label for="inputNamaSupplier">Nomor telepon Supplier</label>
-                        <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
-            </div>
+                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
+                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        </div>
+            <div class="form-group">
+                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
+                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        </div>
+            <div class="form-group">
+                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
+                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        </div>
+            <div class="form-group">
+                                    <label for="inputNamaSupplier">Nomor telepon Supplier</label>
+                                    <input type="text" class="form-control" name="nomorteleponsupplier" placeholder="Masukan NOMOR Telepon Supplier...">
+                        </div>            
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

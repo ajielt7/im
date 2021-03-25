@@ -26,7 +26,11 @@ class User extends BaseController
 	
 	public function savebon()
 	{
-			
+			$this->bonModel->save([
+						'barang_id' => $this->request->getVar('barang_id'),
+						'konsumen_id' => $this->request->getVar('konsumen_id')
+					]);
+						return redirect()->to('/user/forminputbon');
 	}
 		
  //--EKSEKUSI DATA BARANG --------------------------------------	
@@ -45,7 +49,15 @@ class User extends BaseController
 	
 	public function savebarang()
 	{
-			
+			$this->barangModel->save([
+						'namabarang' => $this->request->getVar('namabarang'),
+						'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
+						'jumlahbarang' => $this->request->getVar('jumlahbarang'),
+						'hargabarang' => $this->request->getVar('hargabarang'),
+						'supplier_id' => $this->request->getVar('supplier_id'),
+						'tanggalpenerimaan' => $this->request->getVar('tanggalpenerimaan')
+					]);
+						return redirect()->to('/user/forminputbarang');
 	}
 
  //--EKSEKUSI DATA SUPPLIER--------------------------------------
@@ -89,7 +101,12 @@ class User extends BaseController
 	
 	public function savekonsumen()
 	{
-
-    }	
+    $this->konsumenModel->save([
+			'namakonsumen' => $this->request->getVar('namakonsumen'),
+			'alamatkonsumen' => $this->request->getVar('alamatkonsumen'),
+			'nomorhandphone' => $this->request->getVar('nomorhandphone'),
+		]);
+			return redirect()->to('/user/forminputkonsumen');
+  }	
 
 }

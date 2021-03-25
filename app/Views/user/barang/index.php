@@ -12,14 +12,20 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Nama Barang</th>
+              <th scope="col">No SJ</th>
+              <th scope="col">Jumlah Barang</th>
+              <th scope="col">Harga Barang</th>
               <th scope="col">Nama Supplier</th>
-              <th scope="col">Alamat Supplier</th>
-              <th scope="col">Nomor Telepn</th>
+              <th scope="col">Tanggal Terima</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>

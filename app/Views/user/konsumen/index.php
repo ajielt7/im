@@ -12,9 +12,9 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Nama Supplier</th>
-              <th scope="col">Alamat Supplier</th>
-              <th scope="col">Nomor Telepn</th>
+              <th scope="col">Nama Konsumen</th>
+              <th scope="col">Alamat Konsumen</th>
+              <th scope="col">Nomor Handphone</th>
             </tr>
           </thead>
           <tbody>
