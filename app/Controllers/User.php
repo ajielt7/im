@@ -10,7 +10,7 @@ class User extends BaseController
 		return view('user/index', $data);
 	}
 	
-//--EKSEKUSI DATA PENGEBONAN----------------------------------------
+     //--EKSEKUSI DATA PENGEBONAN----------------------------------------
 	
 	public function bon()
 	{
@@ -24,14 +24,14 @@ class User extends BaseController
 		return view('user/bon/forminputbon', $data);
 	}
 	
-	public function savesupplier()
+	public function savebon()
 	{
 			
 	}
 		
-//--EKSEKUSI DATA BARANG --------------------------------------	
+ //--EKSEKUSI DATA BARANG --------------------------------------	
 
-	public function supplier()
+	public function barang()
 	{
 		$data['title'] = 'List Barang';
 		return view('user/barang/index', $data);
@@ -48,7 +48,7 @@ class User extends BaseController
 			
 	}
 
-//--EKSEKUSI DATA SUPPLIER--------------------------------------
+ //--EKSEKUSI DATA SUPPLIER--------------------------------------
 
 	public function supplier()
 	{
@@ -64,10 +64,15 @@ class User extends BaseController
 	
 	public function savesupplier()
 	{
-			
+		$this->supplierModel->save([
+			'namasupllier' => $this->request->getVar('namasupllier'),
+			'alamatsupplier' => $this->request->getVar('alamatsupplier'),
+			'nomortelepon' => $this->request->getVar('nomortelepon'),
+		]);
+			return redirect()->to('/user/forminputsupplier');
 	}
 
-//--EKSEKUSI DATA KONSUMEN--------------------------------------
+ //--EKSEKUSI DATA KONSUMEN--------------------------------------
 
 
 	public function kosumen()
@@ -76,7 +81,7 @@ class User extends BaseController
 		return view('user/konsumen/index', $data);
 	}
 		
-	public function forminputsupplier()
+	public function forminputkonsumen()
 	{
 		$data['title'] = 'FORM input Konsumen';
 		return view('user/konsumen/forminputkonsumen', $data);
@@ -84,6 +89,7 @@ class User extends BaseController
 	
 	public function savekonsumen()
 	{
-			
-	}
+
+    }	
+
 }
