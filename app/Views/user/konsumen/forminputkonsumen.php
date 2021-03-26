@@ -16,7 +16,7 @@
           </div>
           <div class="form-group">
             <label for="inputNamaKonsumen">Nama Konsumen</label>
-            <input type="text" class="form-control" name="namaKonsumen" placeholder="Masukan Nama Konsumen...">
+            <input type="text" class="form-control" name="namakonsumen" placeholder="Masukan Nama Konsumen...">
           </div>
           
           <div class="form-group">

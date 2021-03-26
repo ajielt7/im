@@ -88,7 +88,6 @@ class User extends BaseController
 		
 	public function forminputsupplier()
 	{
-		session();
 		$data = [
 			'title' => 'FORM input Supplier',
 			'validation' => \Config\Services::validation()
@@ -99,17 +98,25 @@ class User extends BaseController
 	public function savesupplier()
 	{
 		if(!$this->validate([
-			'namasupplier' => 'required|is_unique[supplier.namasupplier]'
+			'namasupplier' => [
+				'rules' => 'required|is_unique[supplier.namasupplier]',
+				'errors' => [
+					'required' => 'Nama supplier harus di isi / Tidak boleh kosong',
+					'is_unique' => 'Nama supplier jangan sama harus berbeda'
+				]
+			]
 		])){
 
 			$validation = \Config\Services::validation();
-			return redirect()->to('/user/forminputsupplier')->withInput()->with('validation', $validation);
+			return redirect()->to('/user/forminputsupplier')->withInput();
 		}
 		$this->supplierModel->save([
 			'namasupplier' => $this->request->getVar('namasupplier'),
 			'alamatsupplier' => $this->request->getVar('alamatsupplier'),
 			'notelp' => $this->request->getVar('notelp')
 		]);
+
+		    session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
 			return redirect()->to('/user/forminputsupplier');
 	}
 

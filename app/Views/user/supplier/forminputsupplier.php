@@ -6,13 +6,22 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Data Pengambilan / Pengebonan</h1>
-        <?= $validation->listErrors(); ?>
+        <h1 class="h3 mb-4 text-gray-800">Input Pengebonan</h1>
+
+        <?php if(session()->getflashdata('pesan')) : ?>
+          <div class="alert alert-success" role="alert">
+             <?= session()->getflashdata('pesan'); ?>
+          </div>
+        <?php endif; ?>
+        
         <form action="/user/savesupplier" method="post">
           
           <div class="form-group">
             <label for="inputNamaSupplier">Nama Supplier</label>
-            <input type="text" class="form-control" name="namasupplier" placeholder="Masukan Nama Supplier...">
+            <input type="text" class="form-control <?= ($validation->hasError('namasupplier')) ? 'is-invalid' : '' ;?>" name="namasupplier" placeholder="Masukan Nama Supplier...">
+               <div id="validationServer03Feedback" class="invalid-feedback">
+               <?= $validation->getError('namasupplier'); ?>
+               </div>
           </div>
           
           <div class="form-group">
