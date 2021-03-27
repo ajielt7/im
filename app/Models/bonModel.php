@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class BonModel extends Model
 {
-    protected $table      = 'supplier';
+    protected $table      = 'bon';
     protected $allowedFields = ['barang_id', 'konsumen_id', 'jumlahkeluarbarang'];
     protected $useTimestamps = true;
 }

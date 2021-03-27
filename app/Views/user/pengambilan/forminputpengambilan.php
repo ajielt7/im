@@ -6,29 +6,48 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Data Pengambilan / Pengebonan</h1>
-        
-        <form action="/user/savebon" method="post">
-          
-          <div class="form-group">
-            <label for="inputNamaSupplier">Nama Supplier</label>
-            <input type="text" class="form-control" name="namasupplier" placeholder="Masukan Nama Supplier...">
+
+        <?php if(session()->getflashdata('pesan')) : ?>
+          <div class="alert alert-success" role="alert">
+             <?= session()->getflashdata('pesan'); ?>
           </div>
+        <?php endif; ?>
+        
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data Pengambilan / Pengebonan</h6>
+          </div>
+          <div class="card-body">
+          <form action="/user/savebon" method="post">
           
           <div class="form-group">
-                      <label for="inputIDBarang">ID Barang</label>
-                      <input type="text" class="form-control" name="barang_id" placeholder="Masukan ID Barang...">
+            <input type="text" class="form-control <?= ($validation->hasError('barang_id')) ? 'is-invalid' : ''  ?>" name="barang_id" placeholder="Masukan ID Barang...">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('barang_id'); ?>
             </div>
-            <div class="form-group">
-                        <label for="inputIDKonsumen">ID Konsumen</label>
-                        <input type="text" class="form-control" name="konsumen_id" placeholder="Masukan ID Konsumen...">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control <?= ($validation->hasError('konsumen_id')) ? 'is-invalid' : ''  ?>" name="konsumen_id" placeholder="Masukan ID Konsumen...">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('konsumen_id'); ?>
             </div>
-            <div class="form-group">
-                        <label for="inputJumlahBarang">Jumlah Barang</label>
-                        <input type="text" class="form-control" name="jumlahkeluarbarang" placeholder="Masukan Jumlah Barang...">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control <?= ($validation->hasError('jumlahkeluarbarang')) ? 'is-invalid' : ''  ?>" name="jumlahkeluarbarang" placeholder="Masukan Jumlah Barang...">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('jumlahkeluarbarang'); ?>
             </div>
+          </div>
+            
           <button type="submit" class="btn btn-primary">Submit</button>
+
         </form>
+          </div>
+        </div>
+
+        
 
     </div>
 

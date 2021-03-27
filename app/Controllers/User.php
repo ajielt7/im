@@ -36,19 +36,49 @@ class User extends BaseController
 		
 	public function forminputbon()
 	{
-		$data['title'] = 'FORM input Pengebonan';
+		$data = [
+			'title' => 'FORM input Pengebonan',
+			'validation' => \Config\Services::validation()
+		];
 		return view('user/pengambilan/forminputpengambilan', $data);
 	}
 	
 	public function savebon()
 	{
-			$this->bonModel->save([
-						'barang_id' => $this->request->getVar('barang_id'),
-						'konsumen_id' => $this->request->getVar('konsumen_id'),
-						'jumlahkeluarbarang' => $this->request->getVar('jumlahkeluarbarang')
-					]);
+		if(!$this->validate([
+			'barang_id' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'ID konsumen harus di isi / Tidak boleh kosong'
+				]
+			],
+			'konsumen_id' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Nama konsumen harus di isi / Tidak boleh kosong',
 					
-						return redirect()->to('/user/forminputbon');
+			    ]
+			],
+			'jumlahkeluarbarang' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Jumlah pengeluaran barang harus di isi / Tidak boleh kosong',
+					
+			    ]
+	        ]
+		])){
+			$validation = \Config\Services::validation();
+			return redirect()->to('/user/forminputbon')->withInput();
+		}
+		$this->bonModel->save([
+			'barang_id'          => $this->request->getVar('barang_id'),
+			'konsumen_id'        => $this->request->getVar('konsumen_id'),
+			'jumlahkeluarbarang' => $this->request->getVar('jumlahkeluarbarang')
+	    ]);
+
+		session()->setFlashdata('pesan', 'Data sudah dimasukan');
+					
+		return redirect()->to('/user/forminputbon');
 	}
 		
  //--EKSEKUSI DATA BARANG --------------------------------------	
@@ -61,21 +91,69 @@ class User extends BaseController
 		
 	public function forminputbarang()
 	{
-		$data['title'] = 'FORM input Barang';
+		$data = [
+			'title'      => 'FORM input Barang',
+			'validation' => \Config\Services::validation()
+		];
 		return view('user/barang/forminputbarang', $data);
 	}
 	
 	public function savebarang()
 	{
+		if(!$this->validate([
+			'namabarang' => [
+				'rules' => 'required|is_unique[barang.namabarang]',
+				'errors' => [
+					'required' => 'Nama Barang harus di isi / Tidak boleh kosong',
+					'is_unique' => 'Nama Barang jangan sama harus berbeda'
+					]
+				],
+			'supplier_id' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Nama supplier harus di isi / Tidak boleh kosong',
+					
+			    ]
+			],
+			'kondisibarang' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Kondisi barang harus di isi / Tidak boleh kosong',
+					
+			    ]
+			],
+			'jumlahterima' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Jumlah barang harus di isi / Tidak boleh kosong',
+					
+			    ]
+			],
+			'hargabarang' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Harga barang harus di isi / Tidak boleh kosong',
+					
+			    ]
+	        ]
+		])){
+			$validation = \Config\Services::validation();
+			return redirect()->to('/user/forminputbarang')->withInput();
+		}
 			$this->barangModel->save([
-						'namabarang' => $this->request->getVar('namabarang'),
-						'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
-						'jumlahbarang' => $this->request->getVar('jumlahbarang'),
-						'hargabarang' => $this->request->getVar('hargabarang'),
-						'supplier_id' => $this->request->getVar('supplier_id'),
-						'tanggalpenerimaan' => $this->request->getVar('tanggalpenerimaan')
-					]);
-						return redirect()->to('/user/forminputbarang');
+				'namabarang'      => $this->request->getVar('namabarang'),
+				'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
+				'supplier_id'     => $this->request->getVar('supplier_id'),
+				'kondisibarang'   => $this->request->getVar('kondisibarang'),
+				'jumlahterima'    => $this->request->getVar('jumlahterima'),
+				'hargabarang'     => $this->request->getVar('hargabarang'),
+				'tanggalterima'   => $this->request->getVar('tanggalterima')
+			]);
+
+			session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
+
+			return redirect()->to('/user/forminputbarang');
+
 	}
 
  //--EKSEKUSI DATA SUPPLIER--------------------------------------
@@ -111,9 +189,9 @@ class User extends BaseController
 			return redirect()->to('/user/forminputsupplier')->withInput();
 		}
 		$this->supplierModel->save([
-			'namasupplier' => $this->request->getVar('namasupplier'),
+			'namasupplier'   => $this->request->getVar('namasupplier'),
 			'alamatsupplier' => $this->request->getVar('alamatsupplier'),
-			'notelp' => $this->request->getVar('notelp')
+			'notelp'         => $this->request->getVar('notelp')
 		]);
 
 		    session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
@@ -131,19 +209,46 @@ class User extends BaseController
 		
 	public function forminputkonsumen()
 	{
-		$data['title'] = 'FORM input Konsumen';
+		$data = [
+			'title' => 'FORM input Konsumen',
+			'validation' => \Config\Services::validation()
+		];
 		return view('user/konsumen/forminputkonsumen', $data);
 	}
 	
 	public function savekonsumen()
 	{
-    $this->konsumenModel->save([
-			'konsumenid' => $this->request->getVar('konsumenid'),
-			'namakonsumen' => $this->request->getVar('namakonsumen'),
+		if(!$this->validate([
+			'konsumenid' => [
+				'rules' => 'required|is_unique[konsumen.konsumenid]',
+				'errors' => [
+					'required' => ' Nomor ID konsumen harus di isi / Tidak boleh kosong',
+					'is_unique' => 'Nomor ID konsumen jangan sama harus berbeda'
+					]
+				],
+			'namakonsumen' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Nama konsumen harus di isi / Tidak boleh kosong',
+					
+			    ]
+	        ]
+		])){
+
+			$validation = \Config\Services::validation();
+			return redirect()->to('/user/forminputkonsumen')->withInput();
+		}
+         $this->konsumenModel->save([
+		
+			'konsumenid'     => $this->request->getVar('konsumenid'),
+			'namakonsumen'   => $this->request->getVar('namakonsumen'),
 			'alamatkonsumen' => $this->request->getVar('alamatkonsumen'),
-			'nohp' => $this->request->getVar('nohp')
+			'nohp'           => $this->request->getVar('nohp')
 		]);
-			return redirect()->to('/user/forminputkonsumen');
+
+		session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
+
+		return redirect()->to('/user/forminputkonsumen');
   }	
 
 }

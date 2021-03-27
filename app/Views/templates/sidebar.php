@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav card shadow-sm bg-white sidebar sidebar-light accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -43,7 +43,7 @@
             <li class="nav-item">
                             <a class="nav-link" href="/user/bon">
                                 <i class="fas fa-hand-holding-water"></i>
-                                <span>Form Pengabilan / Pengebonan</span></a>
+                                <span>Form Pengebonan</span></a>
              </li>
              
              <li class="nav-item">
