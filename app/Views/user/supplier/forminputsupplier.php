@@ -6,20 +6,19 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
+        <div class="card shadow mb-4" style="margin-top: -100px;">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Input Pengebonan</h6>
+          </div>
+          <div class="card-body">
 
-        <?php if(session()->getflashdata('pesan')) : ?>
+          <?php if(session()->getflashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
              <?= session()->getflashdata('pesan'); ?>
           </div>
         <?php endif; ?>
 
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Input Pengebonan</h6>
-          </div>
-          <div class="card-body">
             <form action="/user/savesupplier" method="post">
-          
           <div class="form-group">
             <label for="inputNamaSupplier">Nama Supplier</label>
             <input type="text" class="form-control <?= ($validation->hasError('namasupplier')) ? 'is-invalid' : '' ;?>" name="namasupplier" placeholder="Masukan Nama Supplier...">

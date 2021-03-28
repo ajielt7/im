@@ -9,4 +9,5 @@ class BarangModel extends Model
     protected $table      = 'barang';
     protected $allowedFields = ['namabarang', 'nomorsuratjalan', 'supplier_id','kondisibarang', 'jumlahterima','hargabarang', 'tanggalterima'];
     protected $useTimestamps = true;
+
 }

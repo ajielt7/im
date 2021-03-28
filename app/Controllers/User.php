@@ -30,7 +30,16 @@ class User extends BaseController
 	
 	public function bon()
 	{
-		$data['title'] = 'List Pengebonan';
+		$this->bonModel->select('namabarang, kondisibarang, namasupplier, jumlahkeluarbarang, namakonsumen');
+        $this->bonModel->join('barang', 'barang.id = bon.barang_id');
+        $this->bonModel->join('supplier', 'supplier.id = barang.supplier_id');
+        $this->bonModel->join('konsumen', 'konsumen.id = bon.konsumen_id');
+		$query = $this->bonModel->get();
+
+		$data = [
+			'title' => 'List Pengebonan',
+			'bon' => $query->getResult()
+		];
 		return view('user/pengambilan/index', $data);
 	}
 		
@@ -85,15 +94,26 @@ class User extends BaseController
 
 	public function barang()
 	{
-		$data['title'] = 'List Barang';
+
+        $this->barangModel->select('namabarang, nomorsuratjalan, supplier_id, kondisibarang, jumlahterima, hargabarang, namasupplier, tanggalterima');
+        $this->barangModel->join('supplier', 'supplier.id = barang.supplier_id');
+		$query = $this->barangModel->get();
+
+		$data = [
+			'title' => 'List Barang',
+			'barang' => $query->getResult()
+		];
 		return view('user/barang/index', $data);
 	}
 		
 	public function forminputbarang()
 	{
+		$this->supplierModel->select('id, namasupplier');
+		$query = $this->supplierModel->get();
 		$data = [
 			'title'      => 'FORM input Barang',
-			'validation' => \Config\Services::validation()
+			'validation' => \Config\Services::validation(),
+			'barang'     => $query->getResult()
 		];
 		return view('user/barang/forminputbarang', $data);
 	}
@@ -160,7 +180,10 @@ class User extends BaseController
 
 	public function supplier()
 	{
-		$data['title'] = 'List Supplier';
+		$data = [
+			'title' => 'List Supplier',
+			'supplier' => $this->supplierModel->findAll()
+		];
 		return view('user/supplier/index', $data);
 	}
 		
@@ -203,7 +226,10 @@ class User extends BaseController
 
 	public function konsumen()
 	{
-		$data['title'] = 'List Konsumen';
+		$data = [
+			'title' => 'List Konsumen',
+			'konsumen' => $this->konsumenModel->findAll()
+		];
 		return view('user/konsumen/index', $data);
 	}
 		

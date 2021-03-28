@@ -7,20 +7,20 @@
 
         <!-- Page Heading -->
 
+        <div class="card shadow-sm mb-4" style="margin-top: -100px;">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data Pengambilan / Pengebonan</h6>
+          </div>
+          <div class="card-body">
+          
         <?php if(session()->getflashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
              <?= session()->getflashdata('pesan'); ?>
           </div>
         <?php endif; ?>
 
-        <div class="card shadow-sm mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pengambilan / Pengebonan</h6>
-          </div>
-          <div class="card-body">
-
           <form action="/user/savebarang" method="post">
-          
+
           <div class="form-group">
             <input type="text" class="form-control <?= ($validation->hasError('namabarang')) ? 'is-invalid' : '' ?>" name="namabarang" placeholder="Masukan Id supplier...">
             <div id="validationServer03Feedback" class="invalid-feedback">
@@ -31,10 +31,19 @@
           <div class="form-group">
             <input type="text" class="form-control" name="nomorsuratjalan" placeholder="Masukan Nomor SJ...">
           </div>
-            
+
           <div class="form-group">
-            <input type="text" class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" placeholder="Masukan Id supplier...">
-            <div id="validationServer03Feedback" class="invalid-feedback">
+            <input type="hidden" class="form-control" name="id" values="<?= $barang->id; ?>">
+          </div>
+
+          <div class="form-group">
+             <label for="exampleFormControlSelect1">Supplier</label>
+                <select class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="exampleFormControlSelect1">
+                <?php foreach ($barang as $b) : ?>
+                  <option><?= $b->namasupplier; ?></option>
+                <?php endforeach; ?>
+               </select>
+               <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('supplier_id'); ?>
             </div>
           </div>

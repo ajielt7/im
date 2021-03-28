@@ -7,17 +7,21 @@
 
         <!-- Page Heading -->
 
-        <?php if(session()->getflashdata('pesan')) : ?>
+        
+        
+        <div class="card shadow mb-4" style="margin-top: -100px;">
+        
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data Pengambilan / Pengebonan</h6>
+          </div>
+
+
+          <div class="card-body">
+          <?php if(session()->getflashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
              <?= session()->getflashdata('pesan'); ?>
           </div>
         <?php endif; ?>
-        
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pengambilan / Pengebonan</h6>
-          </div>
-          <div class="card-body">
           <form action="/user/savebon" method="post">
           
           <div class="form-group">
