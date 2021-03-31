@@ -163,7 +163,7 @@ class User extends BaseController
 			$this->barangModel->save([
 				'namabarang'      => $this->request->getVar('namabarang'),
 				'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
-				'supplier_id'     => $this->request->getVar('supplier_id'),
+				'supplier_id'     => $this->request->getVar('id'),
 				'kondisibarang'   => $this->request->getVar('kondisibarang'),
 				'jumlahterima'    => $this->request->getVar('jumlahterima'),
 				'hargabarang'     => $this->request->getVar('hargabarang'),
@@ -219,6 +219,24 @@ class User extends BaseController
 
 		    session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
 			return redirect()->to('/user/forminputsupplier');
+	}
+
+	public function getDataAutocomplate()
+	{
+		$autocomplete = $this->request->getVar('term');
+		// var_dump($autocomplete);
+		// die;
+		if($autocomplete){
+			$getAutocompleteSupplier = $this->supplierModel->getDataAutocomplete($autocomplete);
+			// var_dump($getAutocompleteSupplier);
+			// die;
+			foreach($getAutocompleteSupplier as $row) {
+				$results[] = array(
+					'label' => $row['namasupplier']
+				);
+				$this->response->setContentType('application/json')->setJSON($results);
+			}
+		}
 	}
 
  //--EKSEKUSI DATA KONSUMEN--------------------------------------

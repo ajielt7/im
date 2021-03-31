@@ -22,7 +22,7 @@
           <form action="/user/savebarang" method="post">
 
           <div class="form-group">
-            <input type="text" class="form-control <?= ($validation->hasError('namabarang')) ? 'is-invalid' : '' ?>" name="namabarang" placeholder="Masukan Id supplier...">
+            <input type="text" class="form-control <?= ($validation->hasError('namabarang')) ? 'is-invalid' : '' ?>" name="namabarang" placeholder="Masukan Nama Barang...">
             <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('namabarang'); ?>
             </div>
@@ -33,21 +33,15 @@
           </div>
 
           <div class="form-group">
-            <input type="hidden" class="form-control" name="id" values="<?= $barang->id; ?>">
+            <input type="hidden" class="form-control" name="id" values="">
           </div>
 
           <div class="form-group">
-             <label for="exampleFormControlSelect1">Supplier</label>
-                <select class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="exampleFormControlSelect1">
-                <?php foreach ($barang as $b) : ?>
-                  <option><?= $b->namasupplier; ?></option>
-                <?php endforeach; ?>
-               </select>
-               <div id="validationServer03Feedback" class="invalid-feedback">
+            <input type="text" class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="supplier_id" placeholder="Masukan Nama Supplier...">
+            <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('supplier_id'); ?>
             </div>
           </div>
-
           <div class="form-group">
             <input type="text" class="form-control <?= ($validation->hasError('kondisibarang')) ? 'is-invalid' : '' ?>" name="kondisibarang" placeholder="Masukan Kondisi Barang...">
             <div id="validationServer03Feedback" class="invalid-feedback">

@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url();?>/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom styles jquery autocomplate-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body id="page-top">
@@ -99,6 +101,16 @@
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url();?>/js/sb-admin-2.min.js"></script>
 
+    <!-- scrip jquery autocomplate-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#supplier_id" ).autocomplete({
+                 source: "/user/getDataAutocomplate"
+            });
+        } );
+    </script>
 </body>
 
 </html>
