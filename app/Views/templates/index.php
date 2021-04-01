@@ -107,7 +107,26 @@
     <script>
         $( function() {
             $( "#supplier_id" ).autocomplete({
-                 source: "/user/getDataAutocomplate"
+                 source: "/user/getSupplier",
+                 select: function(event, data){
+                     $('#id').val(data.item.id);
+                 }
+            });
+        } );
+        $( function() {
+            $( "#barang_id" ).autocomplete({
+                 source: "/user/getBarang",
+                 select: function(event, data){
+                     $('#barid').val(data.item.id);
+                 }
+            });
+        } );
+        $( function() {
+            $( "#konsumen_id" ).autocomplete({
+                 source: "/user/getKonsumen",
+                 select: function(event, data){
+                     $('#konid').val(data.item.id);
+                 }
             });
         } );
     </script>

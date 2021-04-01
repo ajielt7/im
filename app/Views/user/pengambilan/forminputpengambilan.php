@@ -24,15 +24,24 @@
         <?php endif; ?>
           <form action="/user/savebon" method="post">
           
+
           <div class="form-group">
-            <input type="text" class="form-control <?= ($validation->hasError('barang_id')) ? 'is-invalid' : ''  ?>" name="barang_id" placeholder="Masukan ID Barang...">
+            <input type="hidden" name="barid" id="barid" value="">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control <?= ($validation->hasError('barang_id')) ? 'is-invalid' : ''  ?>" name="barang_id" id="barang_id" placeholder="Masukan ID Barang...">
             <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('barang_id'); ?>
             </div>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control <?= ($validation->hasError('konsumen_id')) ? 'is-invalid' : ''  ?>" name="konsumen_id" placeholder="Masukan ID Konsumen...">
+            <input type="hidden" name="konid" id="konid" value="">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control <?= ($validation->hasError('konsumen_id')) ? 'is-invalid' : ''  ?>" name="konsumen_id" id ="konsumen_id" placeholder="Masukan ID Konsumen...">
             <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('konsumen_id'); ?>
             </div>

@@ -80,8 +80,8 @@ class User extends BaseController
 			return redirect()->to('/user/forminputbon')->withInput();
 		}
 		$this->bonModel->save([
-			'barang_id'          => $this->request->getVar('barang_id'),
-			'konsumen_id'        => $this->request->getVar('konsumen_id'),
+			'barang_id'          => $this->request->getVar('barid'),
+			'konsumen_id'        => $this->request->getVar('konid'),
 			'jumlahkeluarbarang' => $this->request->getVar('jumlahkeluarbarang')
 	    ]);
 
@@ -108,12 +108,12 @@ class User extends BaseController
 		
 	public function forminputbarang()
 	{
-		$this->supplierModel->select('id, namasupplier');
-		$query = $this->supplierModel->get();
+	// 	$this->supplierModel->select('id, namasupplier');
+	// 	$query = $this->supplierModel->get();
 		$data = [
 			'title'      => 'FORM input Barang',
-			'validation' => \Config\Services::validation(),
-			'barang'     => $query->getResult()
+			'validation' => \Config\Services::validation()
+			// 'barang'     => $query->getResult()
 		];
 		return view('user/barang/forminputbarang', $data);
 	}
@@ -176,6 +176,24 @@ class User extends BaseController
 
 	}
 
+	public function getBarang(){
+		$autocomplete = $this->request->getVar('term');
+		// var_dump($autocomplete);
+		// die;
+		if($autocomplete){
+			$getAutocompleteSupplier = $this->barangModel->getDataAutocomplete($autocomplete);
+			// var_dump($getAutocompleteSupplier);
+			// die;
+			foreach($getAutocompleteSupplier as $row) {
+				$results[] = array(
+					'label' => $row['namabarang'],
+					'id' => $row['id']
+				);
+			}
+			return $this->response->setContentType('application/json')->setJSON(json_encode($results));
+		}
+	}
+
  //--EKSEKUSI DATA SUPPLIER--------------------------------------
 
 	public function supplier()
@@ -221,7 +239,7 @@ class User extends BaseController
 			return redirect()->to('/user/forminputsupplier');
 	}
 
-	public function getDataAutocomplate()
+	public function getSupplier()
 	{
 		$autocomplete = $this->request->getVar('term');
 		// var_dump($autocomplete);
@@ -232,11 +250,19 @@ class User extends BaseController
 			// die;
 			foreach($getAutocompleteSupplier as $row) {
 				$results[] = array(
-					'label' => $row['namasupplier']
+					'label' => $row['namasupplier'],
+					'id' => $row['id']
 				);
-				$this->response->setContentType('application/json')->setJSON($results);
 			}
+			return $this->response->setContentType('application/json')->setJSON(json_encode($results));
 		}
+	}
+
+	public function changename($namasupllier){
+		$cname = $this->request->getVar("namasupplier", true);
+
+
+		return $this->response->setContentType('application/json')->setJSON(json_encode($cname));
 	}
 
  //--EKSEKUSI DATA KONSUMEN--------------------------------------
@@ -294,5 +320,23 @@ class User extends BaseController
 
 		return redirect()->to('/user/forminputkonsumen');
   }	
+
+  public function getKonsumen(){
+	$autocomplete = $this->request->getVar('term');
+	// var_dump($autocomplete);
+	// die;
+	if($autocomplete){
+		$getAutocompleteSupplier = $this->konsumenModel->getDataAutocomplete($autocomplete);
+		// var_dump($getAutocompleteSupplier);
+		// die;
+		foreach($getAutocompleteSupplier as $row) {
+			$results[] = array(
+				'label' => $row['namakonsumen'],
+				'id' => $row['id']
+			);
+		}
+		return $this->response->setContentType('application/json')->setJSON(json_encode($results));
+	}
+}
 
 }

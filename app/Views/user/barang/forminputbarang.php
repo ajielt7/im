@@ -33,7 +33,7 @@
           </div>
 
           <div class="form-group">
-            <input type="hidden" class="form-control" name="id" values="">
+          <input type="hidden" id="id" name="id" value="">
           </div>
 
           <div class="form-group">
