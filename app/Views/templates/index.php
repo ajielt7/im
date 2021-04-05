@@ -129,6 +129,17 @@
                  }
             });
         } );
+
+        $(document).ready(function(){
+            let tb = '<section class="form-inline"><div class="form-group"><input type="hidden" id="id" name="id" value=""></div><div class="form-group mx-sm-3 mb-2"><input type="text" class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="supplier_id" placeholder="Masukan Nama Supplier..."><div id="validationServer03Feedback" class="invalid-feedback"><?= $validation->getError('supplier_id'); ?></div></div><button type="button" id="remove" class="btn btn-danger mb-2">remove</button></section>'
+            $('#add').click(function(){
+                $('#aksi #formbarang').append(tb);
+            });
+
+            $('#aksi #formbarang').on('click','#remove',function(){
+                $(this).closest('section').remove();
+            });
+        });
     </script>
 </body>
 
