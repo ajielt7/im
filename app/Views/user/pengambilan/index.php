@@ -22,6 +22,11 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <?php if(session()->getflashdata('pesan')) : ?>
+                               <div class="alert alert-success" role="alert">
+                                    <?= session()->getflashdata('pesan'); ?>
+                               </div>
+                            <?php endif; ?>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
@@ -31,6 +36,7 @@
                                             <th>Kondisi</th>
                                             <th>Nama Konsumen</th>
                                             <th>Supplier</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -41,6 +47,7 @@
                                             <th>Kondisi</th>
                                             <th>Nama Konsumen</th>
                                             <th>Supplier</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -53,6 +60,7 @@
                                             <td><?= $b->kondisibarang; ?></td>
                                             <td><?= $b->namakonsumen; ?></td>
                                             <td><?= $b->namasupplier; ?></td>
+                                            <td><a href="/user/delbon/<?= $b->bonid; ?>" class="btn btn-danger fas fa-trash-alt"></a></td>
                                         </tr>
                                      <?php endforeach; ?> 
                                     </tbody>

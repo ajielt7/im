@@ -30,7 +30,7 @@ class User extends BaseController
 	
 	public function bon()
 	{
-		$this->bonModel->select('namabarang, kondisibarang, namasupplier, jumlahkeluarbarang, namakonsumen');
+		$this->bonModel->select('bon.id as bonid, namabarang, kondisibarang, namasupplier, jumlahkeluarbarang, namakonsumen');
         $this->bonModel->join('barang', 'barang.id = bon.barang_id');
         $this->bonModel->join('supplier', 'supplier.id = barang.supplier_id');
         $this->bonModel->join('konsumen', 'konsumen.id = bon.konsumen_id');
@@ -89,13 +89,20 @@ class User extends BaseController
 					
 		return redirect()->to('/user/forminputbon');
 	}
+
+	public function delbon($id){
+        $this->bonModel->delete($id);
+		session()->setFlashdata('pesan', 'Data Berhasil dihapus');
+
+		return redirect()->to('/user/bon');
+	}
 		
  //--EKSEKUSI DATA BARANG --------------------------------------	
 
 	public function barang()
 	{
 
-        $this->barangModel->select('namabarang, nomorsuratjalan, supplier_id, kondisibarang, jumlahterima, hargabarang, namasupplier, tanggalterima');
+        $this->barangModel->select('barang.id as barid, namabarang, nomorsuratjalan, supplier_id, kondisibarang, jumlahterima, hargabarang, namasupplier, tanggalterima');
         $this->barangModel->join('supplier', 'supplier.id = barang.supplier_id');
 		$query = $this->barangModel->get();
 
@@ -122,10 +129,9 @@ class User extends BaseController
 	{
 		if(!$this->validate([
 			'namabarang' => [
-				'rules' => 'required|is_unique[barang.namabarang]',
+				'rules' => 'required',
 				'errors' => [
 					'required' => 'Nama Barang harus di isi / Tidak boleh kosong',
-					'is_unique' => 'Nama Barang jangan sama harus berbeda'
 					]
 				],
 			'supplier_id' => [
@@ -160,15 +166,41 @@ class User extends BaseController
 			$validation = \Config\Services::validation();
 			return redirect()->to('/user/forminputbarang')->withInput();
 		}
-			$this->barangModel->save([
-				'namabarang'      => $this->request->getVar('namabarang'),
-				'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
-				'supplier_id'     => $this->request->getVar('id'),
-				'kondisibarang'   => $this->request->getVar('kondisibarang'),
-				'jumlahterima'    => $this->request->getVar('jumlahterima'),
-				'hargabarang'     => $this->request->getVar('hargabarang'),
-				'tanggalterima'   => $this->request->getVar('tanggalterima')
-			]);
+	       
+            if($this->request->getVar('save')){
+
+				$namabarang = $this->request->getVar('namabarang');
+			    $nomorsuratjalan = $this->request->getVar('nomorsuratjalan');
+			    $supplier_id = $this->request->getVar('id');
+			    $kondisibarang = $this->request->getVar('kondisibarang');
+			    $jumlahterima = $this->request->getVar('jumlahterima');
+		        $hargabarang = $this->request->getVar('hargabarang');
+		     	$tanggalterima = $this->request->getVar('tanggalterima');
+
+				foreach ($namabarang as $nabar => $value){
+					$this->barangModel->save([
+
+						'namabarang'      => $value,
+				        'nomorsuratjalan' => $nomorsuratjalan,
+				        'supplier_id'     => $supplier_id,
+				        'kondisibarang'   => $kondisibarang,
+				        'jumlahterima'    => $jumlahterima,
+				        'hargabarang'     => $hargabarang,
+				        'tanggalterima'   => $tanggalterima
+
+					]);
+				}
+			}
+
+			// $this->barangModel->save([
+			// 	'namabarang'      => $this->request->getVar('namabarang'),
+			// 	'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
+			// 	'supplier_id'     => $this->request->getVar('id'),
+			// 	'kondisibarang'   => $this->request->getVar('kondisibarang'),
+			// 	'jumlahterima'    => $this->request->getVar('jumlahterima'),
+			// 	'hargabarang'     => $this->request->getVar('hargabarang'),
+			// 	'tanggalterima'   => $this->request->getVar('tanggalterima')
+			// ]);
 
 			session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
 
@@ -192,6 +224,13 @@ class User extends BaseController
 			}
 			return $this->response->setContentType('application/json')->setJSON(json_encode($results));
 		}
+	}
+
+	public function delbar($id){
+        $this->barangModel->delete($id);
+		session()->setFlashdata('pesan', 'Data Berhasil dihapus');
+
+		return redirect()->to('/user/barang');
 	}
 
  //--EKSEKUSI DATA SUPPLIER--------------------------------------
@@ -258,11 +297,11 @@ class User extends BaseController
 		}
 	}
 
-	public function changename($namasupllier){
-		$cname = $this->request->getVar("namasupplier", true);
+	public function delsup($id){
+        $this->supplierModel->delete($id);
+		session()->setFlashdata('pesan', 'Data Berhasil dihapus');
 
-
-		return $this->response->setContentType('application/json')->setJSON(json_encode($cname));
+		return redirect()->to('/user/supplier');
 	}
 
  //--EKSEKUSI DATA KONSUMEN--------------------------------------
@@ -337,6 +376,13 @@ class User extends BaseController
 		}
 		return $this->response->setContentType('application/json')->setJSON(json_encode($results));
 	}
-}
+    }
+
+	public function delkon($id){
+        $this->konsumenModel->delete($id);
+		session()->setFlashdata('pesan', 'Data Berhasil dihapus');
+
+		return redirect()->to('/user/konsumen');
+	}
 
 }

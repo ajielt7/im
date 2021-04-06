@@ -22,6 +22,11 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <?php if(session()->getflashdata('pesan')) : ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?= session()->getflashdata('pesan'); ?>
+                                </div>
+                            <?php endif; ?>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -30,6 +35,7 @@
                                             <th>Nomor ID Konsumen</th>
                                             <th>Alamat</th>
                                             <th>Nomor Hp /WA</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -39,6 +45,7 @@
                                             <th>Nomor ID Konsumen</th>
                                             <th>Alamat</th>
                                             <th>Nomor Hp /WA</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -50,6 +57,7 @@
                                             <td><?= $kon['konsumenid'] ?></td>
                                             <td><?= $kon['alamatkonsumen'] ?></td>
                                             <td><?= $kon['nohp'] ?></td>
+                                            <td><a href="/user/delkon/<?= $kon['id'] ?>" class="btn btn-danger fas fa-trash-alt"></a></td>
                                         </tr>
                                      <?php endforeach; ?>   
                                     </tbody>

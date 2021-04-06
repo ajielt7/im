@@ -23,53 +23,79 @@
         <?php endif; ?>
 
           <form action="/user/savebarang" id='aksi' method="post">
-
-          <div class="form-group">
-            <input type="text" class="form-control <?= ($validation->hasError('namabarang')) ? 'is-invalid' : '' ?>" name="namabarang" placeholder="Masukan Nama Barang...">
-            <div id="validationServer03Feedback" class="invalid-feedback">
-              <?= $validation->getError('namabarang'); ?>
-            </div>
-          </div>
           
           <div class="form-group">
             <input type="text" class="form-control" name="nomorsuratjalan" placeholder="Masukan Nomor SJ...">
           </div>
-
           <div id="formbarang">
-             <div class="form-inline">
-                <div class="form-group">
-                   <input type="hidden" id="id" name="id" value="">
+             <div class="form-inline mb-1">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control <?= ($validation->hasError('namabarang')) ? 'is-invalid' : '' ?>" name="namabarang[]" id="namabarang" placeholder="Nama Barang...">
+                  <div id="validationServer03Feedback" class="invalid-feedback">
+                       <?= $validation->getError('namabarang'); ?>
+                  </div>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
-                  <input type="text" class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="supplier_id" placeholder="Masukan Nama Supplier...">
+                  <input type="text" class="form-control <?= ($validation->hasError('kondisibarang')) ? 'is-invalid' : '' ?>" name="kondisibarang[]" placeholder="Kondisi Barang...">
                   <div id="validationServer03Feedback" class="invalid-feedback">
-                       <?= $validation->getError('supplier_id'); ?>
+                       <?= $validation->getError('kondisibarang'); ?>
+                  </div>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control <?= ($validation->hasError('jumlahterima')) ? 'is-invalid' : '' ?>" name="jumlahterima[]" placeholder="jumlah Barang...">
+                  <div id="validationServer03Feedback" class="invalid-feedback">
+                       <?= $validation->getError('jumlahterima'); ?>
+                  </div>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control <?= ($validation->hasError('hargabarang')) ? 'is-invalid' : '' ?>" name="hargabarang[]" placeholder="Harga Barang...">
+                  <div id="validationServer03Feedback" class="invalid-feedback">
+                       <?= $validation->getError('hargabarang'); ?>
                   </div>
                 </div>
                 <button type="button" id="add" class="btn btn-primary mb-2">add</button>
              </div>
           </div>
 
+          <!-- <div class="form-group">
+            <input type="text" class="form-control <?= ($validation->hasError('namabarang')) ? 'is-invalid' : '' ?>" name="namabarang" placeholder="Masukan Nama Barang...">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('namabarang'); ?>
+            </div>
+          </div> -->
+          
+
+                <div class="form-group">
+                   <input type="hidden" id="id" name="id" value="">
+                </div>
+                
           <div class="form-group">
+            <input type="text" class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="supplier_id" placeholder="Masukan nama supplier...">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('supplier_id'); ?>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
             <input type="text" class="form-control <?= ($validation->hasError('kondisibarang')) ? 'is-invalid' : '' ?>" name="kondisibarang" placeholder="Masukan Kondisi Barang...">
             <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('kondisibarang'); ?>
             </div>
-          </div>
+          </div> -->
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input type="text" class="form-control <?= ($validation->hasError('jumlahterima')) ? 'is-invalid' : '' ?>" name="jumlahterima" placeholder="Masukan Jumlah Penerimaan...">
             <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('jumlahterima'); ?>
             </div>
-          </div>
+          </div> -->
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input type="text" class="form-control <?= ($validation->hasError('hargabarang')) ? 'is-invalid' : '' ?>" name="hargabarang" placeholder="Masukan Harga Barang...">
             <div id="validationServer03Feedback" class="invalid-feedback">
               <?= $validation->getError('hargabarang'); ?>
             </div>
-          </div>
+          </div> -->
 
           <div class="form-group">
             <input type="text" class="form-control" name="tanggalterima" placeholder="Masukan Tanggal Penerimaan...">

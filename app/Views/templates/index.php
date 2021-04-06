@@ -131,7 +131,35 @@
         } );
 
         $(document).ready(function(){
-            let tb = '<section class="form-inline"><div class="form-group"><input type="hidden" id="id" name="id" value=""></div><div class="form-group mx-sm-3 mb-2"><input type="text" class="form-control <?= ($validation->hasError('supplier_id')) ? 'is-invalid' : '' ?>" name="supplier_id" id="supplier_id" placeholder="Masukan Nama Supplier..."><div id="validationServer03Feedback" class="invalid-feedback"><?= $validation->getError('supplier_id'); ?></div></div><button type="button" id="remove" class="btn btn-danger mb-2">remove</button></section>'
+            let tb = '<section class="form-inline mb-1">'
+                    tb +='<div class="form-group mx-sm-3 mb-2">'
+                        tb +='<input type="text" class="form-control" name="namabarang[]" id="namabarang" placeholder="Nama Barang...">'
+                        tb +='<div id="validationServer03Feedback" class="invalid-feedback">'
+                               
+                        tb +='</div>'
+                    tb +='</div>'
+                    tb +='<div class="form-group mx-sm-3 mb-2">'
+                        tb +='<input type="text" class="form-control" name="kondisibarang[]" placeholder="Kondisi Barang...">'
+                        tb +='<div id="validationServer03Feedback" class="invalid-feedback">'
+                           
+                        tb +='</div>'
+                    tb +='</div>'
+                    tb +='<div class="form-group mx-sm-3 mb-2">'
+                        tb +='<input type="text" class="form-contro" name="jumlahterima[]" placeholder="jumlah Barang...">'
+                        tb +='<div id="validationServer03Feedback" class="invalid-feedback">'
+                           
+                        tb +='</div>'
+                    tb +='</div>'
+                    tb +='<div class="form-group mx-sm-3 mb-2">'
+                        tb +='<input type="text" class="form-contr" name="hargabarang[]" placeholder="Harga Barang...">'
+                        tb += '<div id="validationServer03Feedback" class="invalid-feedback">'
+                                                   
+                        tb +='</div>'
+                    tb +='</div>'
+                    tb +='<button type="button" id="remove" class="btn btn-danger mb-2">Hapus</button>'
+                tb += '</section>'
+
+                
             $('#add').click(function(){
                 $('#aksi #formbarang').append(tb);
             });
