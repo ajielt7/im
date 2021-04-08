@@ -166,9 +166,6 @@ class User extends BaseController
 			$validation = \Config\Services::validation();
 			return redirect()->to('/user/forminputbarang')->withInput();
 		}
-	       
-            if($this->request->getVar('save')){
-
 				$namabarang = $this->request->getVar('namabarang');
 			    $nomorsuratjalan = $this->request->getVar('nomorsuratjalan');
 			    $supplier_id = $this->request->getVar('id');
@@ -183,24 +180,13 @@ class User extends BaseController
 						'namabarang'      => $value,
 				        'nomorsuratjalan' => $nomorsuratjalan,
 				        'supplier_id'     => $supplier_id,
-				        'kondisibarang'   => $kondisibarang,
-				        'jumlahterima'    => $jumlahterima,
-				        'hargabarang'     => $hargabarang,
+				        'kondisibarang'   => $kondisibarang[$nabar],
+				        'jumlahterima'    => $jumlahterima[$nabar],
+				        'hargabarang'     => $hargabarang[$nabar],
 				        'tanggalterima'   => $tanggalterima
 
 					]);
 				}
-			}
-
-			// $this->barangModel->save([
-			// 	'namabarang'      => $this->request->getVar('namabarang'),
-			// 	'nomorsuratjalan' => $this->request->getVar('nomorsuratjalan'),
-			// 	'supplier_id'     => $this->request->getVar('id'),
-			// 	'kondisibarang'   => $this->request->getVar('kondisibarang'),
-			// 	'jumlahterima'    => $this->request->getVar('jumlahterima'),
-			// 	'hargabarang'     => $this->request->getVar('hargabarang'),
-			// 	'tanggalterima'   => $this->request->getVar('tanggalterima')
-			// ]);
 
 			session()->setFlashdata('pesan', 'Data Berhasil dimasukan');
 
@@ -248,7 +234,8 @@ class User extends BaseController
 	{
 		$data = [
 			'title' => 'FORM input Supplier',
-			'validation' => \Config\Services::validation()
+			'validation' => \Config\Services::validation(),
+			'supplier' => $this->supplierModel->findAll()
 		];
 		return view('user/supplier/forminputsupplier', $data);
 	}
@@ -322,7 +309,7 @@ class User extends BaseController
 			'title' => 'FORM input Konsumen',
 			'validation' => \Config\Services::validation()
 		];
-		return view('user/konsumen/forminputkonsumen', $data);
+		return view('user/konsumen/daskon', $data);
 	}
 	
 	public function savekonsumen()
